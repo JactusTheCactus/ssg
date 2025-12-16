@@ -1,37 +1,22 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const fs_extra_1 = __importDefault(require("fs-extra"));
-const path_1 = __importDefault(require("path"));
-const util_1 = require("util");
-const ejsRenderFile = (0, util_1.promisify)(require('ejs').renderFile);
-const globP = (0, util_1.promisify)(require('glob'));
-const site_config_1 = __importDefault(require("../site.config"));
-const srcPath = './src';
-const distPath = './public';
-fs_extra_1.default.emptyDirSync(distPath);
-fs_extra_1.default.copy(`${srcPath}/assets`, `${distPath}/assets`);
-globP('**/*.ejs', { cwd: `${srcPath}/pages` })
+import fse from "fs-extra";
+import path from "path";
+import { promisify } from "util";
+import ejs from "ejs";
+import { glob } from "glob";
+import config from "../site.config.js";
+const [src, dist] = ["src", "public"].map((i) => `./${i}`);
+fse.emptyDirSync(dist);
+fse.copy(`${src}/assets`, `${dist}/assets`);
+promisify(glob)("**/*.ejs", { cwd: `${src}/pages` })
     .then((files) => {
     files.forEach((file) => {
-        const fileData = path_1.default.parse(file);
-        const destPath = path_1.default.join(distPath, fileData.dir);
-        fs_extra_1.default
-            .mkdirs(destPath)
-            .then(() => {
-            return ejsRenderFile(`${srcPath}/pages/${file}`, Object.assign({}, site_config_1.default));
-        })
-            .then((pageContents) => {
-            return ejsRenderFile(`${srcPath}/layout.ejs`, Object.assign({}, site_config_1.default, { body: pageContents }));
-        })
-            .then((layoutContent) => {
-            fs_extra_1.default.writeFile(`${destPath}/${fileData.name}.html`, layoutContent);
-        })
-            .catch((err) => {
-            console.error(err);
-        });
+        const fileData = path.parse(file);
+        const dest = path.join(dist, fileData.dir);
+        fse.mkdirs(dest)
+            .then(() => ejs.renderFile(`${src}/pages/${file}`, Object.assign({}, config)))
+            .then((page) => ejs.renderFile(`${src}/layout.ejs`, Object.assign({}, config, { body: page })))
+            .then((layout) => fse.writeFile(`${dest}/${fileData.name}.html`, layout))
+            .catch((err) => console.error(err));
     });
 })
     .catch((err) => {

@@ -1,47 +1,36 @@
-import fse from 'fs-extra'
-import path from 'path'
-import { promisify } from 'util'
-const ejsRenderFile = promisify(require('ejs').renderFile)
-const globP = promisify(require('glob'))
-import config from '../site.config'
-const srcPath = './src'
-const distPath = './public'
-// clear destination folder
-fse.emptyDirSync(distPath)
-// copy assets folder
-fse.copy(`${srcPath}/assets`, `${distPath}/assets`)
-// read page templates
-globP('**/*.ejs', { cwd: `${srcPath}/pages` })
-	.then((files) => {
+import fse from "fs-extra";
+import path from "path";
+import { promisify } from "util";
+import ejs from "ejs";
+import { glob } from "glob";
+import config from "../site.config.js";
+const [src, dist] = ["src", "public"].map((i) => `./${i}`);
+fse.emptyDirSync(dist);
+fse.copy(`${src}/assets`, `${dist}/assets`);
+promisify(glob)("**/*.ejs", { cwd: `${src}/pages` })
+	.then((files: Array<string>) => {
 		files.forEach((file) => {
-			const fileData = path.parse(file)
-			const destPath = path.join(distPath, fileData.dir)
-			// create destination directory
-			fse
-				.mkdirs(destPath)
-				.then(() => {
-					// render page
-					return ejsRenderFile(
-						`${srcPath}/pages/${file}`,
+			const fileData = path.parse(file);
+			const dest = path.join(dist, fileData.dir);
+			fse.mkdirs(dest)
+				.then(() =>
+					ejs.renderFile(
+						`${src}/pages/${file}`,
 						Object.assign({}, config)
 					)
-				})
-				.then((pageContents) => {
-					// render layout with page contents
-					return ejsRenderFile(
-						`${srcPath}/layout.ejs`,
-						Object.assign({}, config, { body: pageContents })
+				)
+				.then((page) =>
+					ejs.renderFile(
+						`${src}/layout.ejs`,
+						Object.assign({}, config, { body: page })
 					)
-				})
-				.then((layoutContent) => {
-					// save the html file
-					fse.writeFile(`${destPath}/${fileData.name}.html`, layoutContent)
-				})
-				.catch((err) => {
-					console.error(err)
-				})
-		})
+				)
+				.then((layout) =>
+					fse.writeFile(`${dest}/${fileData.name}.html`, layout)
+				)
+				.catch((err) => console.error(err));
+		});
 	})
 	.catch((err) => {
-		console.error(err)
-	})
+		console.error(err);
+	});

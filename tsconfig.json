@@ -1,1 +1,1 @@
-{"compilerOptions":{"module":"nodenext","target":"esnext","esModuleInterop":true,"removeComments":true}}
+{"compilerOptions":{"module":"nodenext","target":"esnext","esModuleInterop":true,"removeComments":true,"verbatimModuleSyntax":true,"resolveJsonModule":true}}

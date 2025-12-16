@@ -1,12 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-const projects_json_1 = __importDefault(require("./src/data/projects.json"));
-module.exports = {
+import { readFile } from "node:fs/promises";
+const projects = JSON.parse(await readFile(new URL("./src/data/projects.json", import.meta.url), "utf-8"));
+export default {
     site: {
-        title: 'NanoGen',
-        description: 'Micro Static Site Generator in Node.js',
-        projects: projects_json_1.default
+        title: "NanoGen",
+        description: "Micro Static Site Generator in Node.js",
+        projects
     }
 };
