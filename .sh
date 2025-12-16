@@ -8,12 +8,6 @@ flag() {
 yml() {
 	yq --yaml-fix-merge-anchor-to-spec=true "$@"
 }
-if ! flag local
-	then
-		{ apt-get update && echo "> [ ] Debian-based!"; } || echo "> [X] Not Debian-based!"
-		# command -v jq >/dev/null || { echo "jq missing"; exit 1; }
-		# command -v yq >/dev/null || { echo "yq missing"; exit 1; }
-fi
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
@@ -29,5 +23,5 @@ tsc
 node scripts/build.js
 find . -type d -empty -delete
 if flag local
-	then : #npx serve ./public
+	then npx serve ./public
 fi
