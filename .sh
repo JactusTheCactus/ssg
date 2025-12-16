@@ -10,7 +10,9 @@ yml() {
 }
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
-exec > logs/main.log 2>& 1
+if flag local
+	then exec > logs/main.log 2>& 1
+fi
 while read -r f
 	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
 done < <(find . -name "*.yml" ! \( \
@@ -26,5 +28,5 @@ tsc
 node scripts/build.js
 find . -type d -empty -delete
 if flag local
-	then npx serve ./public
+	then : #npx serve ./public
 fi

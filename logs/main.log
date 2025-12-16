@@ -1,7 +1,0 @@
- INFO  Accepting connections at http://localhost:44743
- HTTP  2025-12-16 12:45:53 a.m. ::1 GET /
- HTTP  2025-12-16 12:45:53 a.m. ::1 Returned 200 in 48 ms
- HTTP  2025-12-16 12:45:53 a.m. ::1 GET /assets/style.css
- HTTP  2025-12-16 12:45:53 a.m. ::1 Returned 200 in 14 ms
- HTTP  2025-12-16 12:45:53 a.m. ::1 GET /favicon.ico
- HTTP  2025-12-16 12:45:53 a.m. ::1 Returned 404 in 17 ms
