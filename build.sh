@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 set -euo pipefail
 flag() {
 	for f in "$@"
