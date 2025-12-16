@@ -10,7 +10,7 @@ yml() {
 }
 if ! flag local
 	then
-		apk add --no-cache bash jq yq
+		apt-get update
 		command -v jq >/dev/null || { echo "jq missing"; exit 1; }
 		command -v yq >/dev/null || { echo "yq missing"; exit 1; }
 fi
