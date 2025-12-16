@@ -10,9 +10,9 @@ yml() {
 }
 if ! flag local
 	then
-		apt-get update
-		command -v jq >/dev/null || { echo "jq missing"; exit 1; }
-		command -v yq >/dev/null || { echo "yq missing"; exit 1; }
+		{ apt-get update && echo "> [ ] Debian-based!"; } || echo "> [X] Not Debian-based!"
+		# command -v jq >/dev/null || { echo "jq missing"; exit 1; }
+		# command -v yq >/dev/null || { echo "yq missing"; exit 1; }
 fi
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
