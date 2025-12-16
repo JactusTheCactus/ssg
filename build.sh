@@ -8,6 +8,9 @@ flag() {
 yml() {
 	yq --yaml-fix-merge-anchor-to-spec=true "$@"
 }
+if ! flag local
+	then apt-get update && apt-get install -y bash jq yq
+fi
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
