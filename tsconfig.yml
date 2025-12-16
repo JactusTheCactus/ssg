@@ -1,0 +1,7 @@
+compilerOptions:
+  # rootDir: ./scripts/src
+  # outDir: ./scripts/dist
+  module: nodenext
+  target: esnext
+  esModuleInterop: true
+  removeComments: true

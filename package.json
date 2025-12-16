@@ -1,0 +1,22 @@
+{
+  "name": "ssg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site.config.js",
+  "scripts": {
+    "build": "./scripts/dist/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "fs-extra": "^11.3.2",
+    "path": "^0.12.7",
+    "typescript": "^5.9.3",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2"
+  }
+}
