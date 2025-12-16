@@ -4,6 +4,7 @@
     - &schwa "\u0259"
     - &e "e\u0323"
     - &omega "\u03C9"
+    - &esh "\u0283"
 - sex: female
   names:
     name:
@@ -33,6 +34,8 @@
 - sex: female
   names:
     name:
-      - Corsair
+      - Ashley
+      - Korsaren
     pron:
-      - [k, *omega, *2, rs, *e, *1, r]
+      - [*ash,*1,*esh,li,*2]
+      - [k, *omega, rza, *1, ryn]
