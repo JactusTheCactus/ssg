@@ -5,24 +5,26 @@ flag() {
 		do [[ -e ".flags/$f" ]] || return 1
 	done
 }
+yml() {
+	yq --yaml-fix-merge-anchor-to-spec=true "$@"
+}
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
+exec > logs/main.log 2>& 1
 while read -r f
-	do yq "$f" -p yaml -o json \
-		| jq -c "." \
-		> "${f%yml}json"
+	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
 done < <(find . -name "*.yml" ! \( \
 	-path "./node_modules/*" \
-	-or \
-	-name "scripts.yml" \
+	-or -name "scripts.yml" \
 \))
-cat "package.json" \
-	| jq -c '.scripts=$scripts' \
-	--argjson scripts "$(cat scripts.yml \
-		| yq -p yaml -o json \
-		| jq -c .
-	)" \
-	> package.json
+while read -r f
+	do npx sass "$f:${f%scss}css" \
+		--no-source-map \
+		--style=compressed
+done < <(find . -name "*.scss")
 tsc
-npm run build
-# npm run serve
+node scripts/build.js
+find . -type d -empty -delete
+if flag local
+	then npx serve ./public
+fi

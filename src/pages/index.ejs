@@ -1,1 +1,33 @@
-<p>index</p>
+<% const c=site.chars.slice(1)
+c.forEach(i=> {
+	if (i.names?.name?.length > 0) { %>
+		<dl id="<%- i.names.name.join("-").toLowerCase() %>">
+			<div class="names">
+				<dt class="name" data-sex="<%- i.sex %>">
+					<%= i.names.name.join(" ") %>
+				</dt>
+				<% if (i.names.pron?.length > 0) { %>
+					<dd class=" pron">
+						<%= `<${i.names.pron
+							.map(p=> p.join(""))
+							.join("|")
+							.toUpperCase()
+						}>` %>
+					</dd>
+				<% } %>
+			</div>
+			<% if (i.species?.length > 0) { %>
+				<dt>Species</dt>
+				<% i.species.forEach(s => { %>
+					<dd><%- s %></dd>
+				<% }) %>
+			<% } %>
+			<% if (i.extra?.length > 0) { %>
+				<dt>Extra</dt>
+				<% i.extra.forEach(e => { %>
+					<dd><%- e %></dd>
+				<% }) %>
+			<% } %>
+		</dl>
+	<% } %>
+<% }) %>

@@ -1,21 +1,26 @@
 import fse from "fs-extra";
 import path from "path";
-import { promisify } from "util";
 import ejs from "ejs";
 import { glob } from "glob";
 import config from "../site.config.js";
+const s = config.site;
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
-fse.copy(`${src}/assets`, `${dist}/assets`);
-promisify(glob)("**/*.ejs", { cwd: `${src}/pages` })
+fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
+glob("**/*.ejs", { cwd: path.join(src, "pages") })
     .then((files) => {
     files.forEach((file) => {
-        const fileData = path.parse(file);
-        const dest = path.join(dist, fileData.dir);
-        fse.mkdirs(dest)
-            .then(() => ejs.renderFile(`${src}/pages/${file}`, Object.assign({}, config)))
-            .then((page) => ejs.renderFile(`${src}/layout.ejs`, Object.assign({}, config, { body: page })))
-            .then((layout) => fse.writeFile(`${dest}/${fileData.name}.html`, layout))
+        const data = path.parse(file);
+        const dest = path.join(dist, data.dir);
+        fse.ensureDir(dest)
+            .then(() => ejs.renderFile(path.join(src, "pages", file), config))
+            .then((page) => ejs.renderFile(path.join(src, "layout.ejs"), {
+            ...config,
+            body: page,
+        }))
+            .then((layout) => {
+            fse.writeFile(path.join(dest, `${data.name}.html`), layout);
+        })
             .catch((err) => console.error(err));
     });
 })

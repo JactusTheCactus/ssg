@@ -1,0 +1,32 @@
+- - - &1 "\u0301"
+    - &2 "\u0300"
+  - - &ash "\u00E6"
+    - &schwa "\u0259"
+    - &e "e\u0323"
+    - &omega "\u03C9"
+- sex: female
+  names:
+    name:
+      - Hound
+      - NcNamara
+    pron:
+      - [haund]
+      - [ny, *1, kn, *schwa, m, *e, *2, r, *schwa]
+  species:
+    - Human
+    - Changeling
+  extra:
+    - Shapeshifts into a large, black wolf
+- sex: female
+  names:
+    name:
+      - Morrigan
+      - Heffernan
+    pron:
+      - [m, *omega, *1, r, *schwa, gy, *2, n]
+      - [he, *1, f, *schwa, rn, *ash, *2, n]
+  species:
+    - Reaper
+  extra:
+    - Killing touch
+    - Wields a scythe

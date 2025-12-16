@@ -1,0 +1,20 @@
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap";
+body {
+	font: 20pt "Noto Sans", sans-serif;
+	.names {
+		font-size: 2em;
+		font-weight: bold;
+		.name {
+			&[data-sex^="f"] {
+				&::before {
+					content: "\2640";
+				}
+			}
+			font-weight: inherit;
+		}
+		.pron {
+			font-style: italic;
+			font-size: 0.5em;
+		}
+	}
+}
