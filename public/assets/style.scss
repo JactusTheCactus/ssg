@@ -3,19 +3,20 @@ body {
 	font: 20pt "Noto Sans", sans-serif;
 	.names {
 		font-size: 2em;
-		font-weight: bold;
 		.name {
 			&[data-sex^="f"] {
 				&::after {
 					content: "\2640";
 				}
 			}
-			font-weight: inherit;
 		}
 		.pron {
 			font-style: italic;
 			font-size: 0.5em;
 		}
+	}
+	dt {
+		font-weight: bold;
 	}
 	dd {
 		text-indent: 2em;
