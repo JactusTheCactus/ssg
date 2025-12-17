@@ -7,42 +7,30 @@
     - &esh "\u0283"
 - sex: female
   names:
-    name:
-      - Hound
-      - NcNamara
+    name: [Hound, NcNamara]
     pron:
       - [haund]
       - [ny, *1, kn, *schwa, m, *e, *2, r, *schwa]
-  species:
-    - Human
-    - Changeling
+  species: [Human, Changeling]
   extra:
     - Shapeshifts into a large, black wolf
 - sex: female
   names:
-    name:
-      - Morrigan
-      - Heffernan
+    name: [Morrigan, Heffernan]
     pron:
       - [m, *omega, *1, r, *schwa, gy, *2, n]
       - [he, *1, f, *schwa, rn, *ash, *2, n]
-  species:
-    - Reaper
+  species: [Reaper]
   extra:
     - Killing touch
     - Wields a scythe
 - sex: female
   names:
-    name:
-      - Ashley
-      - Korsaren
+    name: [Ashley, Korsaren]
     pron:
       - [*ash, *1, *esh, li, *2]
       - [k, *omega, *2, rza, *1, ryn]
-  species:
-    - Human
+  species: [Human]
   extra:
-    - >-
-      Is a corsair / privateer
-      (government sanctioned pirate)
+    - Is a corsair / privateer (government sanctioned pirate)
     - Wields a pair of sabres
