@@ -3,7 +3,6 @@ import path from "path";
 import ejs from "ejs";
 import { glob } from "glob";
 import config from "../site.config.js";
-const s = config.site;
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
 fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
