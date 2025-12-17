@@ -27,7 +27,7 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
 				.then((layout) => {
 					fse.writeFile(
 						path.join(dest, data.name + ".html"),
-						layout
+						minify(layout,{collapseWhitespace:true})
 					);
 				})
 				.catch((err) => console.error(err));
