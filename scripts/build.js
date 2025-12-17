@@ -3,7 +3,6 @@ import path from "path";
 import ejs from "ejs";
 import { glob } from "glob";
 import config from "../site.config.js";
-const s = config.site;
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
 fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
@@ -12,14 +11,15 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
     files.forEach((file) => {
         const data = path.parse(file);
         const dest = path.join(dist, data.dir);
-        fse.ensureDir(dest)
+        fse
+            .ensureDir(dest)
             .then(() => ejs.renderFile(path.join(src, "pages", file), config))
             .then((page) => ejs.renderFile(path.join(src, "layout.ejs"), {
             ...config,
             body: page,
         }))
             .then((layout) => {
-            fse.writeFile(path.join(dest, `${data.name}.html`), layout);
+            fse.writeFile(path.join(dest, data.name + ".html"), layout);
         })
             .catch((err) => console.error(err));
     });
