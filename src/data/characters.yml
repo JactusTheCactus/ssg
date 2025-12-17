@@ -1,10 +1,10 @@
 - - - &1 "\u0301"
     - &2 "\u0300"
   - - &ash "\u00E6"
-    - &schwa "\u0259"
     - &e "e\u0323"
+    - &schwa "\u0259"
     - &omega "\u03C9"
-    - &esh "\u0283"
+  - - &esh "\u0283"
 - sex: female
   names:
     name: [Hound, NcNamara]
