@@ -1,5 +1,5 @@
-<% const c=site.chars.slice(1)
-c.forEach(i=> {
+<% const c = site.chars.slice(1)
+c.forEach(i => {
 	if (i.names?.name?.length > 0) { %>
 		<dl id="<%- i.names.name.join("-").toLowerCase() %>">
 			<div class="names">
@@ -7,9 +7,9 @@ c.forEach(i=> {
 					<%= i.names.name.join(" ") %>
 				</dt>
 				<% if (i.names.pron?.length > 0) { %>
-					<dd class=" pron">
+					<dd class="pron">
 						<%= `<${i.names.pron
-							.map(p=> p.join(""))
+							.map(p => p.join(""))
 							.join("|")
 							.toUpperCase()
 						}>` %>
