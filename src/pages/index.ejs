@@ -19,13 +19,13 @@ c.forEach(i => {
 			<% if (i.species?.length > 0) { %>
 				<dt>Species</dt>
 				<% i.species.forEach(s => { %>
-					<dd><%- s %></dd>
+					<dd class="species"><%- s %></dd>
 				<% }) %>
 			<% } %>
 			<% if (i.extra?.length > 0) { %>
 				<dt>Extra</dt>
 				<% i.extra.forEach(e => { %>
-					<dd><%- e %></dd>
+					<dd class="extra"><%- e %></dd>
 				<% }) %>
 			<% } %>
 		</dl>
