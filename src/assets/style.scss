@@ -6,7 +6,7 @@ body {
 		font-weight: bold;
 		.name {
 			&[data-sex^="f"] {
-				&::before {
+				&::after {
 					content: "\2640";
 				}
 			}
