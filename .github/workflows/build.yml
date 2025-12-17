@@ -1,0 +1,20 @@
+name: Build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Run script
+        run: ./.sh
+      - name: Commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-commit" || :
+          git push origin main
