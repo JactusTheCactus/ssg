@@ -16,7 +16,7 @@ if flag local
 fi
 while read -r f
 	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
-done < <(find . -name "*.yml" ! \( -path "./node_modules/*" -or -name "scripts.yml" \))
+done < <(find . -name "*.yml" ! \( -path "./node_modules/*" -or path "./.github/*" -or -name "scripts.yml" \))
 while read -r f
 	do npx sass "$f:${f%scss}css" --no-source-map --style=compressed
 done < <(find . -name "*.scss")
