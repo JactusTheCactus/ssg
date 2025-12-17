@@ -13,7 +13,7 @@
     name: [Hound, NcNamara]
     pron:
       - [haund]
-      - [ny, *1, kn, *schwa, m, *e, *2, r, *schwa]
+      - [n, y, *1, k, n, *schwa, m, *e, *2, r, *schwa]
   species: [Human, Changeling]
   extra:
     - Shapeshifts into a large, black wolf
@@ -21,8 +21,8 @@
   names:
     name: [Morrigan, Heffernan]
     pron:
-      - [m, *omega, *1, r, *schwa, gy, *2, n]
-      - [he, *1, f, *schwa, rn, *ash, *2, n]
+      - [m, *omega, *1, r, *schwa, g, y, *2, n]
+      - [h, e, *1, f, *schwa, r, n, *ash, *2, n]
   species: [Reaper]
   extra:
     - Killing touch
@@ -32,7 +32,7 @@
     name: [Ashley, Korsaren]
     pron:
       - [*ash, *1, *esh, li, *2]
-      - [k, *omega, *2, rza, *1, ryn]
+      - [k, *omega, *2, r, z, a, *1, r, y, n]
   species: [Human]
   extra:
     - Is a privateer
