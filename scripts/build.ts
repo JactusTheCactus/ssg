@@ -30,7 +30,7 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
 						minify(layout,{
 removeComments:true,
 removeCommentsFromCDATA:true,
-collapseWhitespace:true,
+//collapseWhitespace:true,
 collapseBooleanAttributes:true,
 removeAttributeQuotes:true,
 removeRedundantAttributes:true,
