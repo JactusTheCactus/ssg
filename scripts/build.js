@@ -2,6 +2,8 @@ import fse from "fs-extra";
 import path from "path";
 import ejs from "ejs";
 import { glob } from "glob";
+import htmlMinify from "html-minifier";
+const minify = htmlMinify.minify;
 import config from "../site.config.js";
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
@@ -19,7 +21,7 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
             body: page,
         }))
             .then((layout) => {
-            fse.writeFile(path.join(dest, data.name + ".html"), layout);
+            fse.writeFile(path.join(dest, data.name + ".html"), minify(layout, { collapseWhitespace: true }));
         })
             .catch((err) => console.error(err));
     });
