@@ -24,6 +24,7 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
             fse.writeFile(path.join(dest, data.name + ".html"), minify(layout, {
                 removeComments: true,
                 removeCommentsFromCDATA: true,
+                collapseWhitespace: true,
                 collapseBooleanAttributes: true,
                 removeAttributeQuotes: true,
                 removeRedundantAttributes: true,
