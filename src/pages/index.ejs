@@ -24,14 +24,13 @@ c.forEach(i => {
 				<dt>Species</dt>
 				<% i.species.forEach(s => { %>
 					<dd class="species"><%- s %></dd>
-				<% }) %>
-			<% } %>
-			<% if (i.extra?.length > 0) { %>
+				<% })
+			} if (i.extra?.length > 0) { %>
 				<dt>Extra</dt>
 				<% i.extra.sort().forEach(e => { %>
 					<dd class="extra"><%- e %></dd>
-				<% }) %>
-			<% } %>
+				<% })
+			} %>
 		</dl>
-	<% } %>
-<% }) %>
+	<% }
+}) %>
