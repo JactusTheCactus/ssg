@@ -12,7 +12,7 @@ jobs:
       - name: Run script
         run: ./.sh
       - name: Commit
-        run: |
+        run: |-
           BOT="github-actions[bot]"
           git config --global user.name "$BOT"
           git config --global user.email "$BOT@users.noreply.github.com"
