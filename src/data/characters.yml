@@ -39,6 +39,8 @@
     pron:
       - [*ash, *1, *esh, li, *2]
       - [k, *omega, rza, *1, ryn]
+  species:
+    - Human
   extra:
     - Is a corsair
     - Wields a pair of sabres
