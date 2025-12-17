@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap";
 body {
 	font: 20pt "Noto Sans", sans-serif;
+	text-indent: 1em;
 	.names {
 		font-size: 2em;
 		font-weight: bold;
@@ -16,8 +17,5 @@ body {
 			font-style: italic;
 			font-size: 0.5em;
 		}
-	}
-	dd {
-		text-indent: 1em;
 	}
 }
