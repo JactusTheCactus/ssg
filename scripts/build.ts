@@ -23,7 +23,16 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
 					})
 				)
 				.then((layout) => {
-					fse.writeFile(path.join(dest, [data.name, "html"].join(".")), layout);
+					fse.writeFile(
+						path.join(
+							dest,
+								[
+									data.name,
+									"html"
+								].join(".")
+							),
+						layout
+					);
 				})
 				.catch((err) => console.error(err));
 		});
