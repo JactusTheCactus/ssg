@@ -12,7 +12,8 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
 		files.forEach((file) => {
 			const data = path.parse(file);
 			const dest = path.join(dist, data.dir);
-			fse.ensureDir(dest)
+			fse
+				.ensureDir(dest)
 				.then(() =>
 					ejs.renderFile(path.join(src, "pages", file), config)
 				)
