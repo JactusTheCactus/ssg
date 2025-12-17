@@ -12,7 +12,7 @@ rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
 	then exec > logs/main.log 2>& 1
-	else npm ci
+	else npm ci; npm install html-minifier
 fi
 while read -r f
 	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
