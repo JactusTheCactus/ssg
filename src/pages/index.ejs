@@ -1,5 +1,8 @@
 <% const c = chars.slice(1)
-c.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
+c.sort((a, b) => {
+	return a.names.name.at(-1)
+		.localeCompare(b.names.name.at(-1))
+})
 c.forEach(i => {
 	if (i.names?.name?.length > 0) { %>
 		<dl id="<%- i.names.name.join("-").toLowerCase() %>">
@@ -12,7 +15,6 @@ c.forEach(i => {
 						<%= `<${i.names.pron
 							.map(p => p.join(""))
 							.join("|")
-							//.toUpperCase()
 						}>` %>
 					</dd>
 				<% } %>
