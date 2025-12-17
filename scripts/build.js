@@ -21,7 +21,18 @@ glob("**/*.ejs", { cwd: path.join(src, "pages") })
             body: page,
         }))
             .then((layout) => {
-            fse.writeFile(path.join(dest, data.name + ".html"), minify(layout, { collapseWhitespace: true }));
+            fse.writeFile(path.join(dest, data.name + ".html"), minify(layout, {
+                removeComments: true,
+                removeCommentsFromCDATA: true,
+                collapseWhitespace: true,
+                collapseBooleanAttributes: true,
+                removeAttributeQuotes: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeOptionalTags: true,
+                removeEmptyElements: true
+            }));
         })
             .catch((err) => console.error(err));
     });
