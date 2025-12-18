@@ -1,9 +1,7 @@
 each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-	dl&attributes({
-		id: c.names.name.join("-").toLowerCase()
-	})
+	dl(id=c.names.name.join("-").toLowerCase())
 		.names
-			dt.name&attributes({sex:c.sex})= c.names.name.join(" ")
+			dt.name(sex=c.sex)= c.names.name.join(" ")
 			if c.names.pron
 				dd.pron= "<" + c.names.pron.map(p => p.join("")).join("|") + ">"
 		if c.species
