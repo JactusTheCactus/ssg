@@ -52,7 +52,6 @@ done < <(find . -name "*.scss") \
 	&& log SCSS files successfully compiled to CSS \
 	|| err SCSS files could not be compiled to CSS
 tsc
-rm -r public
 node scripts/pug.js \
 	&& log PUG files successfully compiled to HTML \
 	|| err PUG files could not be compiled to HTML
