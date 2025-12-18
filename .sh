@@ -62,5 +62,5 @@ find . -type d -empty -delete
 echo
 log Build Complete!
 if flag local
-	then printf '\n%s\n\n' "$(cat logs/main.log)" >& 3 && sleep 1
+	then cat logs/main.log >& 3 && sleep 1
 fi
