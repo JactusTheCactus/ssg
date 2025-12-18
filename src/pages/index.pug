@@ -1,5 +1,7 @@
 each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-	dl(id=c.names.name.join("-").toLowerCase())
+	dl&attributes({
+		id: c.names.name.join("-").toLowerCase()
+	})
 		.names
 			dt.name&attributes({sex:c.sex})= c.names.name.join(" ")
 			if c.names.pron
