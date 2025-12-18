@@ -1,16 +1,16 @@
 each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 	dl(id=c.names.name.join("-").toLowerCase())
-		div.names
+		.names
 			dt.name(data-sex=c.sex)= c.names.name.join(" ")
 			if c.names.pron
 				dd.pron= "<" + c.names.pron.map(p => p.join("")).join("|") + ">"
 		if c.species
-			div.species
+			.species
 				dt Species
 				each s in c.species
 					dd= s
 		if c.extra
-			div.extra
+			.extra
 				dt Extra
 				each e in c.extra.sort()
 					dd= e
