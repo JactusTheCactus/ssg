@@ -9,7 +9,7 @@ if flag local
 	then
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
-	else npm install sass && npm ci
+	else npm ci
 fi
 find . \
 	-name "*.json" \( \
