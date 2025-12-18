@@ -4,7 +4,7 @@ body {
 	.names {
 		font-size: 2em;
 		.name {
-			&[data-sex^="f"] {
+			&[sex^="f"] {
 				&::after {
 					content: "\2640";
 				}
