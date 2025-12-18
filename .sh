@@ -9,7 +9,7 @@ if flag local
 	then
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
-	else npm remove serve && npm ci
+	else npm ci
 fi
 find . \
 	-name "*.json" \( \
@@ -62,6 +62,5 @@ find . -type d -empty -delete
 echo
 log Build Complete!
 if flag local
-	then
-		printf '\n%s\n\n' "$(cat logs/main.log)" >& 3 && sleep 1
+	then printf '\n%s\n\n' "$(cat logs/main.log)" >& 3 && sleep 1
 fi
