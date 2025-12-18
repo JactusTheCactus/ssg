@@ -1,8 +1,6 @@
-import {readFile} from "node:fs/promises"
+import { readFile } from "node:fs/promises";
 export default {
 	title: "Characters",
 	description: "Some of my OCs",
-	chars: JSON.parse(
-		await readFile("./src/data/characters.json", "utf-8")
-	)
-}
+	chars: JSON.parse(await readFile("./src/data/characters.json", "utf-8")),
+};

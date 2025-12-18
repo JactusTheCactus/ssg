@@ -8,19 +8,19 @@
 	"license": "ISC",
 	"type": "module",
 	"dependencies": {
-		"ejs": "^3.1.10",
 		"fs-extra": "^11.3.2",
 		"glob": "^13.0.0",
 		"html-minifier": "^4.0.0",
 		"path": "^0.12.7",
+		"pug": "^3.0.3",
 		"scss": "^0.2.4",
 		"serve": "^14.2.5",
 		"typescript": "^5.9.3",
 		"util": "^0.12.5"
 	},
 	"devDependencies": {
-		"@types/ejs": "^3.1.5",
 		"@types/fs-extra": "^11.0.4",
-		"@types/node": "^25.0.2"
+		"@types/node": "^25.0.2",
+		"@types/pug": "^2.0.10"
 	}
 }

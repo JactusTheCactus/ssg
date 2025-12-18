@@ -1,39 +1,39 @@
-- emphasis:
-    - &1 "\u0301"
-    - &2 "\u0300"
-  vowels:
-    - &ash "\u00E6"
-    - &e "e\u0323"
-    - &schwa "\u0259"
-    - &omega "\u03C9"
-  consonants:
-    - &esh "\u0283"
 - sex: female
   names:
-    name: [Hound, NcNamara]
+    name:
+      - Hound
+      - NcNamara
     pron:
       - [haund]
-      - [n, y, *1, k, n, *schwa, m, *e, *2, r, *schwa]
-  species: [Human, Changeling]
+      - [ny, &1 "\u0301", kn, &schwa "\u0259", m, &e "e\u0323", &2 "\u0300", r, *schwa]
+  species:
+    - Human
+    - Changeling
   extra:
     - Shapeshifts into a large, black wolf
 - sex: female
   names:
-    name: [Morrigan, Heffernan]
+    name:
+      - Morrigan
+      - Heffernan
     pron:
-      - [m, *omega, *1, r, *schwa, g, y, *2, n]
-      - [h, e, *1, f, *schwa, r, n, *ash, *2, n]
-  species: [Reaper]
+      - [m, &omega "\u03C9", *1, r, *schwa, gy, *2, n]
+      - [he, *1, f, *schwa, rn, &ash "\u00E6", *2, n]
+  species:
+    - Reaper
   extra:
     - Killing touch
     - Wields a scythe
 - sex: female
   names:
-    name: [Ashley, Korsaren]
+    name:
+      - Ashley
+      - Korsaren
     pron:
-      - [*ash, *1, *esh, li, *2]
-      - [k, *omega, *2, r, z, a, *1, r, y, n]
-  species: [Human]
+      - [*ash, *1, &esh "\u0283", li]
+      - [k, *omega, *2, rza, *1, ryn]
+  species:
+    - Human
   extra:
     - Is a privateer
     - Wields a pair of sabres

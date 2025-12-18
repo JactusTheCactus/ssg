@@ -11,8 +11,19 @@ if flag local
 		exec > logs/main.log 2>& 1
 	else npm ci
 fi
+find . \
+	-name "*.json" \( \
+		-path "./src/data/*" \
+		-or -path "./.vscode/*" \
+		-or -name "tsconfig.json" \
+	\) \
+	! \( \
+		-path "./node_modules/*" \
+	\) \
+	-delete
 while read -r f
-	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
+	do
+		yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
 done < <(find . \
 	-name "*.yml" \
 	! \( \
@@ -24,6 +35,7 @@ done < <(find . \
 ) \
 	&& log YML files successfully converted to JSON \
 	|| err YML files could not be converted to JSON
+rm .editorconfig
 dasel -r yaml -w toml \
 	< .editorconfig.yml \
 	| sed -z "
@@ -34,21 +46,24 @@ dasel -r yaml -w toml \
 	> .editorconfig 2>& 1 \
 	&& log .editorconfig.yml successfully converted to .editorconfig \
 	|| err .editorconfig.yml could not be converted to .editorconfig
+find . -name "*.css" -delete
 while read -r f
 	do npx sass "$f:${f%scss}css" --no-source-map --style=compressed
 done < <(find . -name "*.scss") \
 	&& log SCSS files successfully compiled to CSS \
 	|| err SCSS files could not be compiled to CSS
 tsc
-node scripts/build.js \
-	&& log EJS files successfully compiled to HTML \
-	|| err EJS files could not be compiled to HTML
+rm -r public
+node scripts/pug.js \
+	&& log PUG files successfully compiled to HTML \
+	|| err PUG files could not be compiled to HTML
 find public -name "*.scss" -delete
 find . -type d -empty -delete
+echo
 log Build Complete!
 if flag local
 	then
 		#npx serve ./public
-		cat logs/main.log >& 3
+		printf '\n%s\n\n' "$(cat logs/main.log)" >& 3
 		sleep 1
 fi
