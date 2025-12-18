@@ -20,8 +20,7 @@ find . \
 	! -path "./node_modules/*" \
 	-delete
 while read -r f
-	do
-		yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
+	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
 done < <(find . \
 	-name "*.yml" \
 	! \( \
