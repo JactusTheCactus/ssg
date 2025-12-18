@@ -36,9 +36,7 @@ done < <(find . \
 	&& log YML files successfully converted to JSON \
 	|| err YML files could not be converted to JSON
 if flag local
-	then
-	rm .editorconfig
-	dasel -r yaml -w toml \
+	then rm .editorconfig && dasel -r yaml -w toml \
 		< .editorconfig.yml \
 		| sed -z "
 			s|\\n\\s*\\n\\+|\\n|g
