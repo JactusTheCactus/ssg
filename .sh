@@ -17,9 +17,7 @@ find . \
 		-or -path "./.vscode/*" \
 		-or -name "tsconfig.json" \
 	\) \
-	! \( \
-		-path "./node_modules/*" \
-	\) \
+	! -path "./node_modules/*" \
 	-delete
 while read -r f
 	do
