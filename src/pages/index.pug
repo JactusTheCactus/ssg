@@ -6,7 +6,7 @@ each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at
 				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 		if c.species
 			.species
-				dt Species
+				dt Biology
 				each s in c.species
 					dd= s
 		if c.extra
