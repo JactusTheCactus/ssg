@@ -1,28 +1,54 @@
 #!/usr/bin/env bash
 set -euo pipefail
-flag() {
-	for f in "$@"
-		do [[ -e ".flags/$f" ]] || return 1
-	done
-}
-yml() {
-	yq --yaml-fix-merge-anchor-to-spec=true "$@"
-}
+while read -r util
+	do source "$util"
+done < <(find utilities -name "*.sh")
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
-	then exec > logs/main.log 2>& 1
+	then
+		exec 3>& 1 4>& 2
+		exec > logs/main.log 2>& 1
 	else npm ci
 fi
 while read -r f
 	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
-done < <(find . -name "*.yml" ! \( -path "./node_modules/*" -or -path "./.github/*" -or -name "scripts.yml" \))
+done < <(find . \
+	-name "*.yml" \
+	! \( \
+		-name "scripts.yml" \
+		-o -name ".editorconfig.yml" \
+		-o -path "./.github/*" \
+		-o -path "./node_modules/*" \
+	\)
+) \
+	&& log YML files successfully converted to JSON \
+	|| err YML files could not be converted to JSON
+dasel -r yaml -w toml \
+	< .editorconfig.yml \
+	| sed -z "
+		s|\\n\\s*\\n\\+|\\n|g
+		s|'\\(\\S*\\?\\)'|\\1|g
+		s|  |\\t|g
+	" \
+	> .editorconfig 2>& 1 \
+	&& log .editorconfig.yml successfully converted to .editorconfig \
+	|| err .editorconfig.yml could not be converted to .editorconfig
 while read -r f
 	do npx sass "$f:${f%scss}css" --no-source-map --style=compressed
-done < <(find . -name "*.scss")
+done < <(find . -name "*.scss") \
+	&& log SCSS files successfully compiled to CSS \
+	|| err SCSS files could not be compiled to CSS
 tsc
-node scripts/build.js
+node scripts/build.js \
+	&& log EJS files successfully compiled to HTML \
+	|| err EJS files could not be compiled to HTML
+find public -name "*.scss" -delete
 find . -type d -empty -delete
+log Build Complete!
 if flag local
-	then npx serve ./public
+	then
+		#npx serve ./public
+		cat logs/main.log >& 3
+		sleep 1
 fi

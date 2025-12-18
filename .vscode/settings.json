@@ -1,5 +1,1 @@
-{
-	"yaml.schemas": {
-		"https://json.schemastore.org/tsconfig": "tsconfig.yml"
-	}
-}
+{"yaml.schemas":{"https://json.schemastore.org/tsconfig":"tsconfig.yml"}}
