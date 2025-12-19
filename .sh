@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# while read -r util
-	# do source "$util"
-# done < <(find utilities -name "*.sh")
-find utilities -name "*.sh" -exec "source {}" \;
+while read -r util
+	do source "$util"
+done < <(find utilities -name "*.sh")
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
