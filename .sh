@@ -9,15 +9,7 @@ if flag local
 	then
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
-	else
-		printf '%s\n' "=========="
-		npm i -h
-		printf '%s' "=========="
-		npm i \
-			--no-fund \
-			--no-audit \
-			> /dev/null
-		printf '%s\n' "=========="
+	else npm i > /dev/null
 fi
 find . \
 	-name "*.json" \( \
