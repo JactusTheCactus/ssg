@@ -1,18 +1,14 @@
-if chars
-	ul
-		each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-			li(id=c.names.name.join("-").toLowerCase()): dl
-				.names
-					dt.name(sex=c.sex)= c.names.name.join(" ")
-					if c.names.pron
-						dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
-				if c.species
-					.species
-						dt Biology
-						each s in c.species
-							dd= s
-				if c.extra
-					.extra
-						dt Details
-						each e in c.extra.sort()
-							dd= e
+ul
+	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
+		li(id=c.names.name.join("-").toLowerCase()): dl
+			.names
+				dt.name(sex=c.sex)= c.names.name.join(" ")
+				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
+			.species
+				dt Biology
+				each s in c.species
+					dd= s
+			.extra
+				dt Details
+				each e in c.extra.sort()
+					dd= e
