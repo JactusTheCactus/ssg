@@ -15,7 +15,8 @@ if flag local
 		printf '%s' "=========="
 		npm i \
 			--no-fund \
-			--no-audit
+			--no-audit \
+			> /dev/null
 		printf '%s\n' "=========="
 fi
 find . \
