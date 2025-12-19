@@ -6,9 +6,10 @@ done < <(find utilities -name "*.sh")
 rm -r logs > /dev/null 2>& 1 || :
 mkdir -p logs
 if flag local
-	then
-		exec 3>& 1 4>& 2
-		exec > logs/main.log 2>& 1
+	then exec \
+		3>& 1 \
+		4>& 2 \
+		> logs/main.log 2>& 1
 	else npm ci > /dev/null
 fi
 find . \
