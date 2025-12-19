@@ -11,7 +11,8 @@ if chars
 						dt Biology
 						each s in c.species
 							dd= s
-				if c.extra: .extra
-					dt Details
-					each e in c.extra.sort()
-						dd= e
+				if c.extra
+					.extra
+						dt Details
+						each e in c.extra.sort()
+							dd= e
