@@ -9,7 +9,12 @@ if flag local
 	then
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
-	else npm ci
+	else
+		echo "=========="
+		npm
+		echo "=========="
+		npm ci
+		echo "=========="
 fi
 find . \
 	-name "*.json" \( \
