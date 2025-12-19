@@ -11,7 +11,7 @@ if flag local
 		exec > logs/main.log 2>& 1
 	else
 		echo "=========="
-		npm
+		npm install -h
 		echo "=========="
 		npm ci
 		echo "=========="
