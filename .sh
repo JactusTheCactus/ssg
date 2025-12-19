@@ -10,13 +10,13 @@ if flag local
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
 	else
-		echo "=========="
+		printf '%s\n' "=========="
 		npm i -h
-		echo "=========="
+		printf '%s' "=========="
 		npm i \
 			--no-fund \
 			--no-audit
-		echo "=========="
+		printf '%s\n' "=========="
 fi
 find . \
 	-name "*.json" \( \
