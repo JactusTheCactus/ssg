@@ -1,7 +1,7 @@
 if chars
 	ul
 		each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-			li: dl(id=c.names.name.join("-").toLowerCase())
+			li(id=c.names.name.join("-").toLowerCase()): dl
 				.names
 					dt.name(sex=c.sex)= c.names.name.join(" ")
 					if c.names.pron
