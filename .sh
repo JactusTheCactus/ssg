@@ -13,23 +13,26 @@ if flag local
 	else npm ci > /dev/null
 fi
 find . \
-	-name "*.json" \( \
+	-name "*.json" \
+	\( \
 		-path "./src/data/*" \
 		-or -path "./.vscode/*" \
 		-or -name "tsconfig.json" \
 	\) \
-	! -path "./node_modules/*" \
+	! \
+		-path "./node_modules/*" \
 	-delete
 while read -r f
 	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
 done < <(find . \
 	-name "*.yml" \
-	! \( \
-		-name "scripts.yml" \
-		-o -name ".editorconfig.yml" \
-		-o -path "./.github/*" \
-		-o -path "./node_modules/*" \
-	\)
+	! \
+		\( \
+			-name "scripts.yml" \
+			-o -name ".editorconfig.yml" \
+			-o -path "./.github/*" \
+			-o -path "./node_modules/*" \
+		\)
 ) \
 	&& log YML files successfully converted to JSON \
 	|| err YML files could not be converted to JSON
