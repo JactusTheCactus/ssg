@@ -13,7 +13,7 @@ if flag local
 		echo "=========="
 		npm install -h
 		echo "=========="
-		npm ci
+		npm install --no-fund
 		echo "=========="
 fi
 find . \
