@@ -13,6 +13,8 @@ if flag local
 		echo "=========="
 		npm install -h
 		echo "=========="
+		npm help install
+		echo "=========="
 		npm install --no-fund --no-audit
 		echo "=========="
 fi
