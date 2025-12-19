@@ -10,10 +10,11 @@ if flag local
 		exec 3>& 1 4>& 2
 		exec > logs/main.log 2>& 1
 	else
+		# echo "=========="
+		# npm i -h
 		echo "=========="
-		npm i -h
-		echo "=========="
-		npm install \
+		npm i \
+			-h \
 			--no-fund \
 			--no-audit
 		echo "=========="
