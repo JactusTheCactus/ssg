@@ -7,6 +7,9 @@ table
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
 			td.sex(class=c.sex)
+				case c.sex
+					default
+						=
 			td.name= c.names.name.join(" ")
 			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			td.species: ol
