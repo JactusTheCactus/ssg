@@ -1,15 +1,15 @@
-- 	
-<dl>	
-<dt>Morrigan Heffernan<dd>&lt;mώrəgỳn|héfərnæ̀n&gt;	
-<dt>Biology<dd>Reaper	
-<dt>Details<dd>Killing touch<dd>Wields a scythe</dl>
-- 	
-<dl>	
-<dt>Ashley Korsaren<dd>&lt;ǽʃli|kὼrzáryn&gt;	
-<dt>Biology<dd>Human	
-<dt>Details<dd>Is a privateer<dd>Wields a pair of sabres</dl>
-- 	
-<dl>	
-<dt>Hound NcNamara<dd>&lt;haund|nýknəmẹ̀rə&gt;	
-<dt>Biology<dd>Human<dd>Changeling	
-<dt>Details<dd>Shapeshifts into a large, black wolf</dl>
+- 
+	<dl>
+	<dt>Morrigan Heffernan<dd>&lt;mώrəgỳn|héfərnæ̀n&gt;
+	<dt>Biology<dd>Reaper
+	<dt>Details<dd>Killing touch<dd>Wields a scythe</dl>
+- 
+	<dl>
+	<dt>Ashley Korsaren<dd>&lt;ǽʃli|kὼrzáryn&gt;
+	<dt>Biology<dd>Human
+	<dt>Details<dd>Is a privateer<dd>Wields a pair of sabres</dl>
+- 
+	<dl>
+	<dt>Hound NcNamara<dd>&lt;haund|nýknəmẹ̀rə&gt;
+	<dt>Biology<dd>Human<dd>Changeling
+	<dt>Details<dd>Shapeshifts into a large, black wolf</dl>
