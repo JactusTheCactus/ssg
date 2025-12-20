@@ -21,7 +21,7 @@ function mini(html) {
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
 fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
-config = {...config,body}
+config.body = body
 glob("**/*.pug", { cwd: path.join(src, "pages") })
 	.then((files) => {
 		files.forEach((file) => {
