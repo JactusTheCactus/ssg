@@ -3,7 +3,8 @@ ul
 		li(id=c.names.name.join("-").toLowerCase()): dl
 			.names
 				dt.name(data-sex=c.sex)= c.names.name.join(" ")
-				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
+				- pron = c.names.pron.map(p => p.join("")).join("|")
+				dd.pron <#{pron}>
 			.species
 				dt Biology
 				each s in c.species
