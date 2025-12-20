@@ -1,7 +1,7 @@
 h1#title= title
 p#desc= description
 ul
-	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
+	each c, i in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		li(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")): dl
 			.names
 				dt.name(data-sex=c.sex)= c.names.name.join(" ")
@@ -14,3 +14,5 @@ ul
 				dt Details
 				each e in c.extra.sort()
 					dd= e
+			if i != chars.length - 1
+				hr
