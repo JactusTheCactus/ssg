@@ -36,8 +36,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 							mini(body)
 								.replace(/(?<=<[a-z]+)(?:\s*?[a-z\-]+=[a-z\-]+)+?(?=>)/g, "")
 								.replace(/<\/?(?:div|ul)>/g, "")
-								.replace(/<li>/g, "- ")
-								.replace(/<\/li>/g, "\n")
+								.replace(/<li>(.*?)(?=<li>|$)/g, "- $1")
 						)
 					}
 					return pug.compileFile(path.join(src, "layout.pug"))({
@@ -47,13 +46,11 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 				)
 				.then((layout) => {
 					fse.writeFile(
-						path.join(dest, data.name + ".html"),
+						path.join(dest, `${data.name}.html`),
 						mini(layout)
 					);
 				})
 				.catch((err) => console.error(err));
 		});
 	})
-	.catch((err) => {
-		console.error(err);
-	});
+	.catch((err) => console.error(err));
