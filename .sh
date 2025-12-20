@@ -36,7 +36,7 @@ done < <(find . \
 ) \
 	&& log YML files successfully converted to JSON \
 	|| err YML files could not be converted to JSON
-if flag local
+if ! flag local
 	then
 		apt install dasel
 		rm .editorconfig
