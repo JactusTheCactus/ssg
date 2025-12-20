@@ -2,7 +2,7 @@ h1#title= title
 p#desc= description
 table
 	tr
-		each h in ["Name", "Pronunciation", "Species", "Biology"]
+		each h in ["Sex", "Name", "Pronunciation", "Species", "Biology"]
 			th= h
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
