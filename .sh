@@ -38,7 +38,7 @@ done < <(find . \
 	|| err YML files could not be converted to JSON
 if ! flag local
 	then
-		apt install dasel
+		sudo apt install dasel
 		rm .editorconfig
 		dasel -r yaml -w toml \
 			< .editorconfig.yml \
