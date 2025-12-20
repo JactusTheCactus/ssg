@@ -8,8 +8,12 @@ table
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
 			td.sex(class=c.sex)
 				case c.sex
+					when "male"
+						= "\u2642"
+					when "female"
+						= "\u2640"
 					default
-						=
+						= "\u26A5"
 			td.name= c.names.name.join(" ")
 			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			td.species: ol
