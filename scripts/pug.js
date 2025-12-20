@@ -38,7 +38,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
                     .replace(/<li>(.*?)(?=<li>|$)/g, "- $1\n")
                     .replace(/(?=<dt>)/g, "\n\t")
                     .replace(/(?=<dd>)/g, "\n\t\t")
-                    .replace(/(?=<\/dl>)/g, "\n"));
+                    .replace(/(<\/dl>)/g, "\n$1\n"));
             }
             return pug.compileFile(path.join(src, "layout.pug"))({
                 ...config,

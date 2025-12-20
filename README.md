@@ -7,6 +7,7 @@
 		<dd>Killing touch
 		<dd>Wields a scythe
 </dl>
+
 - <dl>
 	<dt>Ashley Korsaren
 		<dd>&lt;ǽʃli|kὼrzáryn&gt;
@@ -16,6 +17,7 @@
 		<dd>Is a privateer
 		<dd>Wields a pair of sabres
 </dl>
+
 - <dl>
 	<dt>Hound NcNamara
 		<dd>&lt;haund|nýknəmẹ̀rə&gt;
@@ -25,3 +27,4 @@
 	<dt>Details
 		<dd>Shapeshifts into a large, black wolf
 </dl>
+
