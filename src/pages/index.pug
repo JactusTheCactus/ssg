@@ -2,14 +2,14 @@ h1#title= title
 p#desc= description
 table
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-		li(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")): tr
-				tt.name(data-sex=c.sex)= c.names.name.join(" ")
-				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
+		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
+			tt.name(data-sex=c.sex)= c.names.name.join(" ")
+			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			.species
-				dt Biology
+				td Biology
 				each s in c.species
-					dd= s
+					td= s
 			.extra
-				dt Details
+				tt Details
 				each e in c.extra.sort()
-					dd= e
+					td= e
