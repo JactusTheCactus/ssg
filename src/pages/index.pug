@@ -13,7 +13,7 @@ table
 					each s in c.species
 						li= s
 			else
-				td.species= s
+				td.species= s[0]
 			td.extra: ul
 				each e in c.extra.sort()
 					li= e
