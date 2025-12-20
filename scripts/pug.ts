@@ -35,7 +35,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 							removeRedundantAttributes: true,
 							useShortDoctype: true,
 							removeEmptyAttributes: true,
-							// removeOptionalTags: true,
+							removeOptionalTags: true,
 							removeEmptyElements: true,
 						})
 					);
