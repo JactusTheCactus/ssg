@@ -5,17 +5,15 @@ body {
 		font-size: 3em;
 		text-decoration: underline;
 	}
-	#desc {
-		text-indent: 1em;
+	// #desc {}
+	.name {
+		&[data-sex^="f"] {
+			&::after {
+				content: "\2640";
+			}
+		}
 	}
-			.name {
-				&[data-sex^="f"] {
-					&::after {
-						content: "\2640";
-					}
-				}
-			}
-			.pron {
-				font-style: italic;
-			}
+	.pron {
+		font-style: italic;
+	}
 }
