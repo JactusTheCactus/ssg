@@ -27,9 +27,13 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
         const data = path.parse(file);
         const dest = path.join(dist, data.dir);
         fse.ensureDir(dest)
-            .then(() => pug.compileFile(path.join(src, "pages", file))(config))
+            .then(() => {
+            return pug.compileFile(path.join(src, "pages", file))(config);
+        })
             .then((body) => {
-            fse.writeFile("README.md", mini(body));
+            if (data.name === "index") {
+                fse.writeFile("README.md", mini(body));
+            }
             return pug.compileFile(path.join(src, "layout.pug"))({
                 ...config,
                 body,
