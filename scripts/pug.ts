@@ -2,11 +2,10 @@ import fse from "fs-extra";
 import path from "path";
 import { glob } from "glob";
 import pug from "pug";
-import htmlMinify from "html-minifier";
-const minify = htmlMinify.minify;
+import htmlMinifier from "html-minifier";
 import config from "../site.config.js";
 function mini(html) {
-	return minify(html, {
+	return htmlMinifier.minify(html, {
 		removeComments: true,
 		removeCommentsFromCDATA: true,
 		collapseWhitespace: true,
