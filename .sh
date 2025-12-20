@@ -10,10 +10,12 @@ if flag local
 		3>& 1 \
 		4>& 2 \
 		> logs/main.log 2>& 1
-	else {
-		npm ci
-		sudo apt install dasel
-	} > /dev/null 2>& 1
+	else
+		printf '\n'
+		{
+			npm ci
+			sudo apt install dasel
+		} > /dev/null 2>& 1
 fi
 find . \
 	-name "*.json" \
