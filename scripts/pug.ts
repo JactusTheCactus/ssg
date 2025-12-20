@@ -21,7 +21,6 @@ function mini(html) {
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
 fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
-config.body = body
 glob("**/*.pug", { cwd: path.join(src, "pages") })
 	.then((files) => {
 		files.forEach((file) => {
@@ -33,6 +32,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 					if (data.name === "index") {
 						fse.writeFile("README.md", mini(body))
 					}
+					config.content = body
 					return pug.compileFile(path.join(src, "layout.pug"))(config)}
 				)
 				.then((layout) => {
