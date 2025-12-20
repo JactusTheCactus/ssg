@@ -34,7 +34,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
             if (data.name === "index") {
                 fse.writeFile("README.md", mini(body)
                     .replace(/(?<=<[a-z]+)(?:\s*?[a-z\-]+=[a-z\-]+)+?(?=>)/g, "")
-                    .replace(/<\/?div>/g, ""));
+                    .replace(/<\/?(?:div|ul)>/g, ""));
             }
             return pug.compileFile(path.join(src, "layout.pug"))({
                 ...config,
