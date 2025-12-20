@@ -2,7 +2,7 @@ ul
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		li(id=c.names.name.join("-").toLowerCase()): dl
 			.names
-				dt.name(sex=c.sex)= c.names.name.join(" ")
+				dt.name(data-sex=c.sex)= c.names.name.join(" ")
 				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			.species
 				dt Biology
