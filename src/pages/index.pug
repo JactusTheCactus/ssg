@@ -10,9 +10,13 @@ table
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
 			td.name(data-sex=c.sex)= c.names.name.join(" ")
 			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
-			td.species: ol
-				each s in c.species
-					li= s
+			td.species
+				if c.species.length > 1
+					ol
+						each s in c.species
+							li= s
+				else
+					= s
 			td.extra: ul
 				each e in c.extra.sort()
 					li= e
