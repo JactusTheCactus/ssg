@@ -7,7 +7,7 @@ body {
 	}
 	// #desc {}
 	.sex {
-		&[data-sex^="f"] {
+		&.f {
 			&::after {
 				content: "\2640";
 			}
