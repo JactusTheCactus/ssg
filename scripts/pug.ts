@@ -31,7 +31,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 					pug.compileFile(path.join(src, "pages", file))(config)
 				)
 				.then((body) =>
-					fse.writeFile("README.md", mini(body))
+					fse.writeFile("README.md", mini(body));
 					pug.compileFile(path.join(src, "layout.pug"))({
 						...config,
 						body,
