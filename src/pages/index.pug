@@ -16,7 +16,7 @@ table
 						each s in c.species
 							li= s
 				else
-					= s
+					| #{s}
 			td.extra: ul
 				each e in c.extra.sort()
 					li= e
