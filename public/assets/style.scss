@@ -1,0 +1,33 @@
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap";
+body {
+	font: 20pt "Noto Sans", sans-serif;
+	#title {
+		font-size: 3em;
+		text-decoration: underline;
+	}
+	#desc {
+		text-indent: 1em;
+	}
+	#body{
+		.names {
+			font-size: 2em;
+			.name {
+				&[data-sex^="f"] {
+					&::after {
+						content: "\2640";
+					}
+				}
+			}
+			.pron {
+				font-style: italic;
+				font-size: 0.5em;
+			}
+		}
+		dt {
+			font-weight: bold;
+		}
+		dd {
+			text-indent: 2em;
+		}
+	}
+}
