@@ -30,12 +30,12 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 				.then(() =>
 					pug.compileFile(path.join(src, "pages", file))(config)
 				)
-				.then((body) =>
-					fse.writeFile("README.md", mini(body));
-					pug.compileFile(path.join(src, "layout.pug"))({
+				.then((body) => {
+					fse.writeFile("README.md", mini(body))
+					return pug.compileFile(path.join(src, "layout.pug"))({
 						...config,
 						body,
-					})
+					})}
 				)
 				.then((layout) => {
 					fse.writeFile(
