@@ -1,15 +1,18 @@
 h1#title= title
 p#desc= description
 table
+	tr
+		tt Name
+		tt Pronunciation
+		tt Species
+		tt Biology
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
-			tt.name(data-sex=c.sex)= c.names.name.join(" ")
+			td.name(data-sex=c.sex)= c.names.name.join(" ")
 			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
-			.species
-				td Biology
+			td.species: ol
 				each s in c.species
-					td= s
-			.extra
-				tt Details
+					li= s
+			td.extra: ul
 				each e in c.extra.sort()
-					td= e
+					li= e
