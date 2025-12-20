@@ -62,8 +62,8 @@ tsc
 node scripts/pug.js \
 	&& log PUG files successfully compiled to HTML \
 	|| err PUG files could not be compiled to HTML
-find public -name "*.scss" -delete
-find src -name "*.css" -delete
+find public -name "*.scss" -o -name "*.yml" -delete
+find src -name "*.css" -o -name "*.json" -delete
 find . -type d -empty -delete
 echo
 log Build Complete!
