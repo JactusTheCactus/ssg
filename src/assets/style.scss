@@ -6,7 +6,7 @@ body {
 		text-decoration: underline;
 	}
 	// #desc {}
-	.name {
+	.sex {
 		&[data-sex^="f"] {
 			&::after {
 				content: "\2640";
