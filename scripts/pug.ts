@@ -32,15 +32,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 				})
 				.then((body) => {
 					if (data.name === "index") {
-						fse.writeFile("README.md",
-							mini(body)
-								.replace(/(?<=<[a-z]+)(?:\s*?[a-z\-]+=[a-z\-]+)+?(?=>)/g, "")
-								.replace(/<\/?(?:div|ul)>/g, "")
-								.replace(/<li>(.*?)(?=<li>|$)/g, "- $1\n")
-								.replace(/(?=<dt>)/g, "\n\t")
-								.replace(/(?=<dd>)/g, "\n\t\t")
-								.replace(/(<\/dl>)/g, "\n$1\n")
-						)
+						fse.writeFile("README.md", mini(body))
 					}
 					return pug.compileFile(path.join(src, "layout.pug"))({
 						...config,
