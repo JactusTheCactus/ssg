@@ -8,9 +8,8 @@ body {
 	#desc {
 		text-indent: 1em;
 	}
-		.names {
-			font-size: 2em;
 			.name {
+				font-size: 2em;
 				&[data-sex^="f"] {
 					&::after {
 						content: "\2640";
@@ -19,9 +18,7 @@ body {
 			}
 			.pron {
 				font-style: italic;
-				font-size: 0.5em;
 			}
-		}
 		dt {
 			font-weight: bold;
 		}
