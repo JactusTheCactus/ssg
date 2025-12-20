@@ -6,7 +6,7 @@ table
 			th= h
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
 		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
-			td.sex(class=c.sex)
+			td.sex
 				case c.sex
 					when "male"
 						= "\u2642"
