@@ -35,7 +35,8 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
                 fse.writeFile("README.md", mini(body)
                     .replace(/(?<=<[a-z]+)(?:\s*?[a-z\-]+=[a-z\-]+)+?(?=>)/g, "")
                     .replace(/<\/?(?:div|ul)>/g, "")
-                    .replace(/<li>(.*?)(?=<li>|$)/g, "- $1\n"));
+                    .replace(/<li>(.*?)(?=<li>|$)/g, "- $1\n")
+                    .replace(/(?=<d[lt]>)/g, "\t\n"));
             }
             return pug.compileFile(path.join(src, "layout.pug"))({
                 ...config,
