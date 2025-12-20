@@ -1,11 +1,9 @@
 h1#title= title
 p#desc= description
-ul
-	each c, i in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-		li(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")): dl
-			hr
-			.names
-				dt.name(data-sex=c.sex)= c.names.name.join(" ")
+table
+	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
+		li(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")): tr
+				tt.name(data-sex=c.sex)= c.names.name.join(" ")
 				dd.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			.species
 				dt Biology
@@ -15,5 +13,3 @@ ul
 				dt Details
 				each e in c.extra.sort()
 					dd= e
-			if i == chars.length - 1
-				hr
