@@ -41,7 +41,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 					return render(
 						path.join(src, "layout.pug"),
 						{
-							..config,
+							...config,
 							content: body
 						}
 					)
