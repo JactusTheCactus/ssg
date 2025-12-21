@@ -35,12 +35,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 					config["content"] = body
 					return pug.compileFile(path.join(src, "layout.pug"))(config)}
 				)
-				.then((layout) => {
-					fse.writeFile(
-						path.join(dest, `${data.name}.html`),
-						mini(layout)
-					);
-				})
+				.then((layout) => fse.writeFile(path.join(dest, `${data.name}.html`), mini(layout)))
 				.catch((err) => console.error(err));
 		});
 	})
