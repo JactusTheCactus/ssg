@@ -18,8 +18,8 @@ function mini(html) {
 		removeEmptyElements: true,
 	})
 }
-function render(file, data) {
-	return pug.compileFile(file)(data)
+function render(...file, data) {
+	return pug.compileFile(path.join(file))(data)
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
@@ -31,7 +31,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 			const dest = path.join(dist, data.dir);
 			fse.ensureDir(dest)
 				.then(() => render(
-					path.join(src,"pages",file),
+					[src, "pages", file],
 					config
 				))
 				.then((body) => {
@@ -39,7 +39,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 						fse.writeFile("README.md", mini(body))
 					}
 					return render(
-						path.join(src, "layout.pug"),
+						[src, "layout.pug"],
 						{
 							...config,
 							content: body
