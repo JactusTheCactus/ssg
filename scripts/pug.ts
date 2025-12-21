@@ -19,7 +19,7 @@ function mini(html) {
 	})
 }
 function render(file: Array<string>, data) {
-	return pug.compileFile(path.join(file))(data)
+	return pug.compileFile(path.join(...file))(data)
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
