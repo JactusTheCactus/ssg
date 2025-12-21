@@ -5,13 +5,8 @@ body {
 		font-size: 3em;
 		text-decoration: underline;
 	}
+	// #desc {}
 	.pron {
 		font-style: italic;
-		&::before {
-			content: "<";
-		}
-		&::after {
-			content: ">";
-		}
 	}
 }
