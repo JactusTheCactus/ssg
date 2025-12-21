@@ -5,7 +5,9 @@ table
 		each h in ["Sex", "Name", "Pronunciation", "Species", "Biology"]
 			th= h
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-		tr(id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_"))
+		tr(
+			id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")
+		)
 			td.sex
 				case c.sex
 					when "male"
@@ -15,7 +17,7 @@ table
 					default
 						= "\u26A5"
 			td.name= c.names.name.join(" ")
-			td.pron= c.names.pron.map(p => p.join("")).join("|")
+			td.pron= `<${c.names.pron.map(p => p.join("")).join("|")}>`
 			td.species: ol
 				each s in c.species
 					li= s
