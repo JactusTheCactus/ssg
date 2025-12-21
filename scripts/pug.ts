@@ -40,10 +40,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 					}
 					return render(
 						[src, "layout.pug"],
-						{
-							...config,
-							content: body
-						}
+						{...config,content:body}
 					)
 				})
 				.then((layout) => fse.writeFile(path.join(dest, `${data.name}.html`), mini(layout)))
