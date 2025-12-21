@@ -19,7 +19,7 @@ function mini(html) {
     });
 }
 function render(file, data) {
-    return pug.compileFile(file)(data);
+    return pug.compileFile(path.join(...file))(data);
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
@@ -30,12 +30,12 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
         const data = path.parse(file);
         const dest = path.join(dist, data.dir);
         fse.ensureDir(dest)
-            .then(() => render(path.join(src, "pages", file), config))
+            .then(() => render([src, "pages", file], config))
             .then((body) => {
             if (data.name === "index") {
                 fse.writeFile("README.md", mini(body));
             }
-            return render(path.join(src, "layout.pug"), {
+            return render([src, "layout.pug"], {
                 ...config,
                 content: body
             });
