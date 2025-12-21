@@ -36,11 +36,11 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
             .then(() => render([src, "pages", file], config))
             .then((body) => {
             if (data.name === "index") {
-                fse.writeFile("README.md", body);
+                write(["README.md"], body);
             }
             return render([src, "layout.pug"], { ...config, content: body });
         })
-            .then((layout) => fse.writeFile(path.join(dest, `${data.name}.html`), layout))
+            .then((layout) => write([dest, `${data.name}.html`], layout))
             .catch((err) => console.error(err));
     });
 })
