@@ -35,10 +35,7 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
             if (data.name === "index") {
                 fse.writeFile("README.md", mini(body));
             }
-            return render([src, "layout.pug"], {
-                ...config,
-                content: body
-            });
+            return render([src, "layout.pug"], { ...config, content: body });
         })
             .then((layout) => fse.writeFile(path.join(dest, `${data.name}.html`), mini(layout)))
             .catch((err) => console.error(err));
