@@ -15,7 +15,7 @@ if flag local
 		{
 			npm ci
 			sudo apt install dasel
-		} > /dev/null 2>& 1
+		} > logs/install.log 2>& 1
 fi
 find . \
 	-name "*.json" \
