@@ -21,7 +21,7 @@ function mini(html: string) {
 function render(file: string[], data: Record<string, any>) {
 	return mini(pug.compileFile(path.join(...file))(data))
 }
-function write(file: string[] | string, data: string) {
+function write(file: string[], data: string) {
 	return fse.writeFile(path.join(...file), data)
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
@@ -39,14 +39,14 @@ glob("**/*.pug", { cwd: path.join(src, "pages") })
 				))
 				.then((body) => {
 					if (data.name === "index") {
-						fse.writeFile("README.md", body)
+						write(["README.md"], body)
 					}
 					return render(
 						[src, "layout.pug"],
 						{...config,content:body}
 					)
 				})
-				.then((layout) => fse.writeFile(path.join(dest, `${data.name}.html`), layout))
+				.then((layout) => write([dest, `${data.name}.html`], layout))
 				.catch((err) => console.error(err));
 		});
 	})
