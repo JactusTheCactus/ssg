@@ -4,7 +4,7 @@ import { glob } from "glob";
 import pug from "pug";
 import htmlMinifier from "html-minifier";
 import config from "../site.config.js";
-function mini(html) {
+function mini(html: string) {
 	return htmlMinifier.minify(html, {
 		removeComments: true,
 		removeCommentsFromCDATA: true,
@@ -18,8 +18,11 @@ function mini(html) {
 		removeEmptyElements: true,
 	})
 }
-function render(file: Array<string>, data: Record<string, any>) {
+function render(file: string[], data: Record<string, any>) {
 	return mini(pug.compileFile(path.join(...file))(data))
+}
+function write(file: string[] | string, data: string) {
+	return fse.writeFile(path.join(...file), data)
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
