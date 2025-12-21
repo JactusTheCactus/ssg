@@ -21,6 +21,9 @@ function mini(html) {
 function render(file, data) {
     return mini(pug.compileFile(path.join(...file))(data));
 }
+function write(file, data) {
+    return fse.writeFile(path.join(...file), data);
+}
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
 fse.emptyDirSync(dist);
 fse.copy(path.join(src, "assets"), path.join(dist, "assets"));
