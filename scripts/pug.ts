@@ -18,7 +18,7 @@ function mini(html) {
 		removeEmptyElements: true,
 	})
 }
-function render(...file, data) {
+function render(file: Array<string>, data) {
 	return pug.compileFile(path.join(file))(data)
 }
 const [src, dist] = ["src", "public"].map((i) => `./${i}`);
