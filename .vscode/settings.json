@@ -1,7 +1,1 @@
-{
-	"yaml.schemas": {
-		"https://json.schemastore.org/tsconfig": "tsconfig.yml",
-		"src/data/schemas/characters.json": "src/data/characters.yml"
-	},
-	"compile-hero.disable-compile-files-on-did-save-code": true
-}
+{"yaml.schemas":{"https://json.schemastore.org/tsconfig":"tsconfig.yml","src/data/schemas/characters.json":"src/data/characters.yml"}}
