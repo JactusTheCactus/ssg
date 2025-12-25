@@ -1,0 +1,22 @@
+type: array
+items:
+  type: object
+  required: [sex, names, species, extra]
+  additionalProperties: false
+  properties:
+    sex:
+      type: string
+      enum: [male, female]
+    names:
+      type: object
+      required: [name, pron]
+      additionalProperties: false
+      properties:
+        name: &strArr
+          type: array
+          items: { type: string }
+        pron:
+          type: array
+          items: *strArr
+    species: *strArr
+    extra: *strArr

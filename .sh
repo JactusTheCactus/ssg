@@ -3,19 +3,19 @@ set -euo pipefail
 while read -r util
 	do source "$util"
 done < <(find utilities -name "*.sh")
-rm -r logs > /dev/null 2>& 1 || :
+rm -r logs &> /dev/null || :
 mkdir -p logs
 if flag local
 	then exec \
 		3>& 1 \
 		4>& 2 \
-		> logs/main.log 2>& 1
+		&> logs/main.log
 	else
 		printf '\n'
 		{
 			npm ci
 			sudo apt install dasel
-		} > logs/install.log 2>& 1
+		} &> logs/install.log
 fi
 find . \
 	-name "*.json" \
@@ -28,7 +28,7 @@ find . \
 		-path "./node_modules/*" \
 	-delete
 while read -r f
-	do yml "$f" -p yaml -o json | jq -c "." > "${f%yml}json"
+	do yml "$f" | jq -c "." > "${f%yml}json"
 done < <(find . \
 	-name "*.yml" \
 	! \
@@ -40,8 +40,8 @@ done < <(find . \
 		\)
 ) \
 	&& log YML files successfully converted to JSON \
-	|| err YML files could not be converted to JSON
-rm .editorconfig
+	|| warn YML files could not be converted to JSON
+rm .editorconfig &> /dev/null|| :
 dasel -r yaml -w toml \
 	< .editorconfig.yml \
 	| sed -z "
@@ -49,24 +49,24 @@ dasel -r yaml -w toml \
 		s|'\\(\\S*\\?\\)'|\\1|g
 		s|  |\\t|g
 	" \
-	> .editorconfig 2>& 1 \
+	&> .editorconfig \
 	&& log .editorconfig.yml successfully converted to .editorconfig \
-	|| err .editorconfig.yml could not be converted to .editorconfig
+	|| warn .editorconfig.yml could not be converted to .editorconfig
 find . -name "*.css" -delete
 while read -r f
 	do npx sass "$f:${f%scss}css" --no-source-map --style=compressed
 done < <(find . -name "*.scss") \
 	&& log SCSS files successfully compiled to CSS \
-	|| err SCSS files could not be compiled to CSS
+	|| warn SCSS files could not be compiled to CSS
 tsc
 node scripts/pug.js \
 	&& log PUG files successfully compiled to HTML \
-	|| err PUG files could not be compiled to HTML
-find public -name "*.scss" -delete
+	|| warn PUG files could not be compiled to HTML
+find public -name \*.scss -delete
 find src \( \
-	-name "*.css" -o \
-	-name "*.json" \
-\) -delete
+		-name \*.css \
+		-o -name \*.json ! -path \*/schemas/\* \
+	\) -delete
 find . -type d -empty -delete
 echo
 log Build Complete!

@@ -5,8 +5,11 @@ body {
 		font-size: 3em;
 		text-decoration: underline;
 	}
-	// #desc {}
-	.pron {
-		font-style: italic;
+	#title,
+	#desc {
+		text-align: center;
+	}
+	.name {
+		font-weight: bold;
 	}
 }

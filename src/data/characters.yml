@@ -37,3 +37,16 @@
   extra:
     - Is a privateer
     - Wields a pair of sabres
+- sex: male
+  names:
+    name:
+      - Ori
+      - del
+      - Corvo
+    pron:
+      - [*omega, *1, ri]
+      - [del]
+      - [k, *omega, *1, rv, *omega]
+  species:
+    - Human
+  extra: []

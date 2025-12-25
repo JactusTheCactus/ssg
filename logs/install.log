@@ -1,43 +1,0 @@
-
-added 120 packages, and audited 121 packages in 2s
-
-30 packages are looking for funding
-  run `npm fund` for details
-
-1 high severity vulnerability
-
-Some issues need review, and may require choosing
-a different dependency.
-
-Run `npm audit` for details.
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  dasel
-0 upgraded, 1 newly installed, 0 to remove and 42 not upgraded.
-Need to get 3161 kB of archives.
-After this operation, 10.6 MB of additional disk space will be used.
-Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 dasel amd64 2.6.0-1ubuntu0.3 [3161 kB]
-Fetched 3161 kB in 0s (18.8 MB/s)
-Selecting previously unselected package dasel.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 217374 files and directories currently installed.)
-Preparing to unpack .../dasel_2.6.0-1ubuntu0.3_amd64.deb ...
-Unpacking dasel (2.6.0-1ubuntu0.3) ...
-Setting up dasel (2.6.0-1ubuntu0.3) ...
-Processing triggers for man-db (2.12.0-4build2) ...
-Not building database; man-db/auto-update is not 'true'.
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.

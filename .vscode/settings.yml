@@ -1,2 +1,3 @@
 yaml.schemas:
   https://json.schemastore.org/tsconfig: tsconfig.yml
+  src/data/schemas/characters.json: src/data/characters.yml

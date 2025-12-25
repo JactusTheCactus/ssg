@@ -1,3 +1,3 @@
 yml() {
-	yq --yaml-fix-merge-anchor-to-spec=true "$@"
+	python3 scripts/yml.py < "$1"
 }
