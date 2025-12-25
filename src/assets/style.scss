@@ -1,15 +1,30 @@
 @import "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap";
 body {
 	font: 20pt "Noto Sans", sans-serif;
-	#title {
-		font-size: 3em;
-		text-decoration: underline;
+	#pre {
+		#title {
+			font-size: 3em;
+			text-decoration: underline;
+		}
+		#title,
+		#desc {
+			text-align: center;
+		}
 	}
-	#title,
-	#desc {
-		text-align: center;
-	}
-	.name {
-		font-weight: bold;
+	#content {
+		table,
+		th,
+		td {
+			border: calc(1rem / pow(2, 3)) solid;
+		}
+		table tr {
+			th {
+				font-size: 1.5em;
+				text-align: left;
+			}
+			.name {
+				font-weight: bold;
+			}
+		}
 	}
 }

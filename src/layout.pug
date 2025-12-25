@@ -6,4 +6,8 @@ html
 			href="assets/style.css"
 			rel="stylesheet"
 		)
-	body!= content
+	body
+		#pre
+			h1#title= title
+			h2#desc= description
+		#content!= content
