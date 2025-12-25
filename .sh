@@ -15,7 +15,7 @@ if flag local
 		{
 			npm ci
 			sudo apt install dasel
-		} &> logs/install.log
+		} 2> logs/install.log
 fi
 find . \
 	-name "*.json" \
@@ -31,13 +31,12 @@ while read -r f
 	do yml "$f" | jq -c "." > "${f%yml}json"
 done < <(find . \
 	-name "*.yml" \
-	! \
-		\( \
-			-name "scripts.yml" \
-			-o -name ".editorconfig.yml" \
-			-o -path "./.github/*" \
-			-o -path "./node_modules/*" \
-		\)
+	! \( \
+		-name "scripts.yml" \
+		-o -name ".editorconfig.yml" \
+		-o -path "./.github/*" \
+		-o -path "./node_modules/*" \
+	\)
 ) \
 	&& log YML files successfully converted to JSON \
 	|| warn YML files could not be converted to JSON
