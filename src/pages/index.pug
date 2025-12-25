@@ -5,9 +5,12 @@ table
 		each h in "Sex|Name|Pronunciation|Species|Details".split("|")
 			th= h
 	each c in chars.sort((a, b) => a.names.name.at(-1).localeCompare(b.names.name.at(-1)))
-		tr(
-			id=c.names.name.join("-").toLowerCase().replace(/[^a-z0-9-_]/g, "_")
-		)
+		-
+			const nameId = c.names.name
+				.join("-")
+				.toLowerCase()
+				.replace(/[^a-z0-9-_]/g, "_")
+		tr(id=nameId)
 			td.sex
 				case c.sex
 					when "male"

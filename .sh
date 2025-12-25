@@ -67,7 +67,7 @@ find src \( \
 		-name \*.css \
 		-o -name \*.json ! -path \*/schemas/\* \
 	\) -delete
-find . -type d -empty -delete
+find . -empty ! -name "*.*keep" -delete
 echo
 log Build Complete!
 if flag local
